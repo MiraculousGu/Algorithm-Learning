@@ -1,3 +1,4 @@
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
@@ -147,7 +148,7 @@ public class LinkedList <T>{
 
     @SuppressWarnings("unchecked")
     public T[] toArray(){
-        T[] result = (T[]) new Object[size];
+        T[] result = (T[]) Array.newInstance(this.first.value.getClass(), size);
         var temp = first;
         int index = 0;
         while(temp != null){
