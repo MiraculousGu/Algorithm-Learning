@@ -7,22 +7,22 @@ public class LinkedListTest {
         list.addFirst(0);
         list.addFirst(5);
         list.addFirst(1);
-        System.out.println(list.toArray());
+        System.out.println(list.toArrayList());
 
         //test addLast
         System.out.println("Test addLast");
         list.addLast(10);
         list.addLast(99);
-        System.out.println(list.toArray().toString());
+        System.out.println(list.toArrayList());
 
         //test deleteFirst
         System.out.println("Test delete first");
         list.deleteFirst();
-        System.out.println(list.toArray().toString());
+        System.out.println(list.toArrayList());
         //test deleteLast
         System.out.println("Test delete last");
         list.deleteLast();
-        System.out.println(list.toArray().toString());
+        System.out.println(list.toArrayList());
 
         //test contains
         System.out.println("Test contains");
@@ -32,6 +32,11 @@ public class LinkedListTest {
         //test indexOf
         System.out.println("Test indexOf");
         System.out.println("The index of 10 is " + list.indexOf(10));
+
+        //test reverse
+        System.out.println("Test Reverse");
+        list.reverse();
+        System.out.println(list.toArrayList());
 
     }
 }

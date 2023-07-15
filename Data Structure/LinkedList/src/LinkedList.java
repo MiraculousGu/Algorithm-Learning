@@ -146,19 +146,6 @@ public class LinkedList <T>{
         return size == 0;
     }
 
-    @SuppressWarnings("unchecked")
-    public T[] toArray(){
-        T[] result = (T[]) Array.newInstance(this.first.value.getClass(), size);
-        var temp = first;
-        int index = 0;
-        while(temp != null){
-            result[index++] = temp.getValue();
-            temp = temp.next;
-        }
-
-        return result;
-    }
-
     public ArrayList<T> toArrayList(){
         Node<T> temp = first;
         ArrayList<T> result = new ArrayList<>();
@@ -172,5 +159,19 @@ public class LinkedList <T>{
 
     public int size(){
         return size;
+    }
+
+    public void reverse(){
+        var arrlist = this.toArrayList();
+        int index = this.size() - 1;
+        first = new Node<>(arrlist.get(index--));
+        Node temp = first;
+        while(index >= 0){
+            Node<T> node = new Node<>(arrlist.get(index--));
+            temp.next = node;
+            temp = temp.next;
+        }
+        last = temp;
+        last.next = null;
     }
 }
