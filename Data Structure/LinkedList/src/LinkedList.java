@@ -177,4 +177,25 @@ public class LinkedList <T>{
         last = temp;
         last.next = null;
     }
+
+    public T getKthFromTheEnd(int k){
+        if (isEmpty())
+            throw new NoSuchElementException("the list is empty");
+
+        if (k > size())
+            throw new NoSuchElementException("K exceeds the list size");
+
+        //create two pointers
+        Node<T> p1 = first;
+        Node<T> p2 = p1;
+        for (int i = 0; i<k-1; i++)
+            p2 = p2.next;
+
+        while(p2.next != null){
+            p2 = p2.next;
+            p1 = p1.next;
+        }
+
+        return p1.getValue();
+    }
 }

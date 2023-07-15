@@ -38,5 +38,12 @@ public class LinkedListTest {
         list.reverse();
         System.out.println(list.toArrayList());
 
+        //test Kth from the end
+        list.addLast(1);
+        list.addLast(2);
+        list.addLast(3);
+        list.addLast(100);
+        System.out.println("Test the 3th node from the end");
+        System.out.println(list.getKthFromTheEnd(3));
     }
 }
