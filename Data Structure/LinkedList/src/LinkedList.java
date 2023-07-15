@@ -162,12 +162,15 @@ public class LinkedList <T>{
     }
 
     public void reverse(){
-        var arrlist = this.toArrayList();
+        if (isEmpty())
+            return;
+
+        var arraylist = this.toArrayList();
         int index = this.size() - 1;
-        first = new Node<>(arrlist.get(index--));
+        first = new Node<>(arraylist.get(index--));
         Node temp = first;
         while(index >= 0){
-            Node<T> node = new Node<>(arrlist.get(index--));
+            Node<T> node = new Node<>(arraylist.get(index--));
             temp.next = node;
             temp = temp.next;
         }
