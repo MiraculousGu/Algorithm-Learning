@@ -44,6 +44,6 @@ public class LinkedListTest {
         list.addLast(3);
         list.addLast(100);
         System.out.println("Test the 3th node from the end");
-        System.out.println(list.getKthFromTheEnd(3));
+        System.out.println(list.getKthFromTheEnd(1));
     }
 }

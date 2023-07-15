@@ -185,6 +185,9 @@ public class LinkedList <T>{
         if (k > size())
             throw new NoSuchElementException("K exceeds the list size");
 
+        if (k < 0)
+            throw new IllegalArgumentException("K cannot be negative");
+
         //create two pointers
         Node<T> p1 = first;
         Node<T> p2 = p1;
