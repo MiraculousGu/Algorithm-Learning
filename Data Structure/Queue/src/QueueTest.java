@@ -14,7 +14,7 @@ public class QueueTest {
         reverse(queue);
         System.out.println(queue);
 
-        System.out.println("Test the self-built queue");
+        System.out.println("Test the array-implementation queue");
         ArrayQueue arrayQueue = new ArrayQueue(5);
 
         System.out.println("Test enqueue");
@@ -35,7 +35,23 @@ public class QueueTest {
         arrayQueue.enqueue(70);
         System.out.println(arrayQueue);
 
+        System.out.println("Test the Stack-implementation queue");
+        StackQueue<Integer> stackQueue = new StackQueue<>(5);
 
+        System.out.println("Test enqueue");
+        stackQueue.enqueue(10);
+        stackQueue.enqueue(20);
+        stackQueue.enqueue(30);
+        stackQueue.enqueue(40);
+        System.out.println(stackQueue);
+
+        System.out.println("Test dequeue");
+        stackQueue.dequeue();
+        stackQueue.dequeue();
+        System.out.println(stackQueue);
+
+        System.out.println("Test peek");
+        System.out.println(stackQueue.peek());
     }
 
     public static void reverse(Queue<Integer> queue){
