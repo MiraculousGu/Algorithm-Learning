@@ -7,6 +7,9 @@ public class HashMapImplementation {
     public static void main(String[] args) {
         var result = findFirstNoneRepeatedCharacter("a green apple");
         System.out.println(result);
+
+        result = findFirstRepeatedCharaters("a green apple");
+        System.out.println(result);
     }
 
     static Character findFirstNoneRepeatedCharacter(String str){
