@@ -35,6 +35,7 @@ public class QueueTest {
         arrayQueue.enqueue(70);
         System.out.println(arrayQueue);
 
+
         System.out.println("Test the Stack-implementation queue");
         StackQueue<Integer> stackQueue = new StackQueue<>(5);
 
@@ -52,6 +53,35 @@ public class QueueTest {
 
         System.out.println("Test peek");
         System.out.println(stackQueue.peek());
+
+
+        System.out.println("Test ArrayPriorityQueue");
+        ArrayPriorityQueue<Integer> arrayPriorityQueue = new ArrayPriorityQueue<>(5);
+
+        System.out.println("Test insert");
+        arrayPriorityQueue.insert(10);
+        arrayPriorityQueue.insert(30);
+        arrayPriorityQueue.insert(20);
+        arrayPriorityQueue.insert(40);
+        arrayPriorityQueue.insert(50);
+        System.out.println(arrayPriorityQueue);
+
+
+        System.out.println("Test remove");
+        arrayPriorityQueue.remove();
+        arrayPriorityQueue.remove();
+        System.out.println(arrayPriorityQueue);
+
+        System.out.println("Test special cases");
+        arrayPriorityQueue.insert(5);
+        arrayPriorityQueue.insert(70);
+        arrayPriorityQueue.remove();
+        arrayPriorityQueue.remove();
+        arrayPriorityQueue.remove();
+        System.out.println(arrayPriorityQueue);
+        arrayPriorityQueue.remove();
+        arrayPriorityQueue.remove();
+        System.out.println(arrayPriorityQueue);
     }
 
     public static void reverse(Queue<Integer> queue){
