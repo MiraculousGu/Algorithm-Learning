@@ -10,6 +10,10 @@ public class HeapTester {
         System.out.println(heap);;
 
         System.out.println("Test remove");
+        System.out.println("First remove");
+        heap.remove();
+        System.out.println(heap);
+        System.out.println("Second remove");
         heap.remove();
         System.out.println(heap);
     }

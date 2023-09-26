@@ -21,11 +21,6 @@ public class Heap {
        if (isFull())
            return;
 
-       if (isEmpty()){
-           heap[size++] = item;
-           return;
-       }
-
        //first of all, add to the leaf
        heap[size] = item;
 
@@ -48,6 +43,8 @@ public class Heap {
 
     //heap can only support root removal
    public void remove(){
+       if (isEmpty())
+           return;
        //swap the leaf with the root
        swap(size-1,0);
 
@@ -61,9 +58,9 @@ public class Heap {
    }
 
     private void bubbleDown(int position) {
-        int left = 1;
-        int right = 2;
-        boolean correct = heap[position] > heap[left] && heap[position] > heap[right];
+        int left = leftChildIndex(position);
+        int right = rightChildIndex(position);
+        boolean correct = isValidParent(position, left, right);
 
         while (!correct && left < size - 1){
             if (heap[left] > heap[right])
@@ -72,10 +69,26 @@ public class Heap {
                 swap(position,right);
 
             position = position * 2 + 1;
-            left = position * 2 + 1;
-            right = position * 2 + 2;
-            correct = heap[position] > heap[left] && heap[position] > heap[right];
+            left = leftChildIndex(position);
+            right = rightChildIndex(position);
+            correct = isValidParent(position, left, right);
         }
+    }
+
+    private boolean isValidParent(int position, int left, int right) {
+        return heap[position] > heap[left] && heap[position] > heap[right];
+    }
+
+    private int rightChildIndex(int position) {
+        int right;
+        right = position * 2 + 2;
+        return right;
+    }
+
+    private int leftChildIndex(int position) {
+        int left;
+        left = position * 2 + 1;
+        return left;
     }
 
     public Boolean isEmpty(){
