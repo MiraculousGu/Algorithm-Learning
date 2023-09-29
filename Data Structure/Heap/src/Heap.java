@@ -33,7 +33,7 @@ public class Heap {
         int item = heap[position];
         int current = position;
         int parent = (position - 1) / 2;
-        while (item > heap[parent]){
+        while (item > heap[parent] && current > 0){
             //swap item and parent
             swap(current,parent);
             current = parent;
@@ -42,9 +42,9 @@ public class Heap {
     }
 
     //heap can only support root removal
-   public void remove(){
+   public int remove(){
        if (isEmpty())
-           return;
+           return 0;
        //swap the leaf with the root
        swap(size-1,0);
 
@@ -53,30 +53,50 @@ public class Heap {
 
        //bubble down?
        int position = 0;    //from the root
+       int result = heap[position];
        bubbleDown(position);
        size--;
+
+       return result;
    }
 
     private void bubbleDown(int position) {
-        int left = leftChildIndex(position);
-        int right = rightChildIndex(position);
-        boolean correct = isValidParent(position, left, right);
 
-        while (!correct && left < size - 1){
-            if (heap[left] > heap[right])
-                swap(position,left);
-            else
-                swap(position,right);
+        boolean correct = isValidParent(position,largerChild(position));
 
+        while (!correct && hasLeftChild(position)){
+            swap(position,largerChild(position));
+            //move the index
             position = position * 2 + 1;
-            left = leftChildIndex(position);
-            right = rightChildIndex(position);
-            correct = isValidParent(position, left, right);
+            correct = isValidParent(position, largerChild(position));
         }
     }
 
-    private boolean isValidParent(int position, int left, int right) {
-        return heap[position] > heap[left] && heap[position] > heap[right];
+    private boolean hasLeftChild(int position){
+       return leftChildIndex(position) < size;
+    }
+
+    private boolean hasRightChild(int position){
+       return rightChildIndex(position) < size;
+    }
+
+    private int largerChild(int position){
+       if (!hasLeftChild(position))
+           return position;
+
+       int left = leftChildIndex(position);
+
+       if (!hasRightChild(position))
+           if (heap[left] > heap[position])
+               return left;
+
+       int right = rightChildIndex(position);
+
+       return heap[left] > heap[right] ? left : right;
+    }
+
+    private boolean isValidParent(int position, int child) {
+        return heap[position] > heap[child];
     }
 
     private int rightChildIndex(int position) {

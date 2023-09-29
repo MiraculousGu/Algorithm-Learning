@@ -16,5 +16,8 @@ public class HeapTester {
         System.out.println("Second remove");
         heap.remove();
         System.out.println(heap);
+        System.out.println("Third remove");
+        heap.remove();
+        System.out.println(heap);
     }
 }
